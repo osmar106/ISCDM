@@ -4,7 +4,7 @@ import java.sql.*;
 import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;  
-import controller.usuario;
+import model.usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,7 +35,7 @@ else if(name.isEmpty() || lastname.isEmpty() || email.isEmpty() || user.isEmpty(
 ////-->función añadida<--
 
 
-else if(usuario.checkIfUserExists(email)){
+else if(usuario.checkIfUserExists(user)){
     message = "Este usuario ya se encuentra registrado.";
 }
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package controller;
+package model;
 import java.sql.*;
 import java.text.MessageFormat;
 import java.util.Arrays;
@@ -16,8 +16,8 @@ import java.util.Arrays;
  */
 public class usuario {
    private static String url = "jdbc:derby://localhost:1527/DBUsuarios";
-   private static String user = "isdcm";
-   private static String password = "1234";
+   private static String user1 = "isdcm";
+   private static String password1 = "1234";
    
    public static void insert (String[] args){
        try{
@@ -29,7 +29,7 @@ public class usuario {
            
            System.out.println("SQL statement: " + sqlStatement);
            
-           Connection conn = DriverManager.getConnection(url,user,password);
+           Connection conn = DriverManager.getConnection(url,user1,password1);
            Statement st = conn.createStatement();
            st.executeUpdate(sqlStatement);
            
@@ -39,16 +39,16 @@ public class usuario {
        }
    }
    
-   public static boolean checkIfUserExists (String email){
+   public static boolean checkIfUserExists (String user){
        boolean result = false;
        
        try{
            //String email = "cgabante2@gmail.com";
            
            
-           Connection conn = DriverManager.getConnection(url,user,password);
+           Connection conn = DriverManager.getConnection(url,user1,password1);
            Statement st = conn.createStatement();
-           String sqlStatement = MessageFormat.format("SELECT * FROM ISDCM.USUARIOS WHERE CORREO=''{0}''", email);
+           String sqlStatement = MessageFormat.format("SELECT * FROM ISDCM.USUARIOS WHERE USUARIO=''{0}''", user);
            System.out.println("SQL statement: " + sqlStatement);
            
            ResultSet rs = st.executeQuery(sqlStatement);
@@ -75,7 +75,49 @@ public class usuario {
        return result;
    }
    
-   
+   public static boolean login (String user, String password){
+       boolean result = false;
+       
+       try{
+
+           Connection conn = DriverManager.getConnection(url,user1,password1);
+           Statement st = conn.createStatement();
+           String sqlStatement = MessageFormat.format("SELECT * FROM ISDCM.USUARIOS WHERE USUARIO=''{0}''", user);
+           System.out.println("SQL statement: " + sqlStatement);
+           
+           ResultSet rs = st.executeQuery(sqlStatement);
+           
+           //System.out.println("Result set: " + rs.getInt("total"));
+           
+            if(rs.next()){
+                String passwordgot = rs.getString("CONTRASEÑA");
+                System.out.println(passwordgot);
+                
+                if(passwordgot.equals(password)){
+                    result = true;
+                }
+                else{
+                    result = false;
+                }
+                
+                System.out.println("record found");
+                conn.close();
+             
+            }
+              
+            else{
+                System.out.println("record not found");
+                conn.close();
+                result = false;
+            }
+           
+       } catch (Exception e){
+           System.err.println("Error");
+           System.err.println(e.getMessage());
+       }
+       
+       return result;
+   }
    
 }
 
