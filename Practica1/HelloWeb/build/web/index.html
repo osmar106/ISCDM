@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset = "UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Registro de Usuarios</title>
+		<link rel="stylesheet" type="text/css" href="css/pwstyle.css">
+		<script type="text/javascript" src="js/formjs.js"></script>
+	</head>
+<body>
+	<header>
+		<div>
+			<h1>Registro de Usuarios</h1>
+		</div>
+	</header>
+	<main>
+		<div class = "maintext">
+			<div class="contact">
+				<!-- <h2>Get In Touch!</h2> -->
+				<img src="img/contact.png" alt="Contact" title="Contact">
+				<section class="body">
+                    <form method="post" action="loginServlet" id="myForm">
+        
+    					<label>Nombre:<sup>*</sup></label>
+						<input name="name" placeholder="Type Here" required>
+					            
+    					<label>Apellidos:<sup>*</sup></label>
+						<input name="lastname" placeholder="Type Here" required>					   
+					
+                        <label>Correo Electrónico:<sup>*</sup></label>
+						<input name="email" type="email" placeholder="Type Here" required>
+
+						<label>Usuario:<sup>*</sup></label>
+						<input name="user" placeholder="Type Here" required>
+                                        
+                         <label>Contraseña:<sup>*</sup></label>
+						<input name="password" type="password" placeholder="Type Here" id="field_pwd1" required>
+                                        
+                        <label>Repetir Contraseña:<sup>*</sup></label>
+						<input name="repassword" type="password" placeholder="Type Here" id="field_pwd2" title="Por favor, escriba la misma constraseña." required>
+                                        
+						<input id="submit" name="submit" type="submit" value="Enviar">
+                    </form>
+					<br><p class="required"><sup>*</sup>Campos obligatorios</p>
+				</section>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class = "copyright">
+			<p>© 2017 por Victoria Gabante &amp; Osmar Rodríguez</p>
+		</div>
+	</footer>
+</body>
+</html>
