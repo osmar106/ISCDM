@@ -43,7 +43,6 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
     String[] strArray = new String[]{id, title, author, creationdate, reproductions, description, format};
     video.insert(strArray);  
 
-
 }
 
 }

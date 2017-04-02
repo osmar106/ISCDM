@@ -51,10 +51,22 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
         usuario.insert(strArray);
         message = "El usuario fue registrado con éxito.";   
     }
-
+    
+    
+    if(usuario.login(user, password)==true){
+        request.getRequestDispatcher("/video.html").forward(request, response);        
+    }
+    else{
+        message = "Usuario o contraseña incorrectos."; 
+    }
+    
     request.setAttribute("message", message);
     request.getRequestDispatcher("/registroRes.jsp").forward(request, response);
 
-    }  
+
+    
+    
+    
+    }
   
 }  
