@@ -43,9 +43,6 @@ public class usuario {
        boolean result = false;
        
        try{
-           //String email = "cgabante2@gmail.com";
-           
-           
            Connection conn = DriverManager.getConnection(url,user1,password1);
            Statement st = conn.createStatement();
            String sqlStatement = MessageFormat.format("SELECT * FROM ISDCM.USUARIOS WHERE USUARIO=''{0}''", user);

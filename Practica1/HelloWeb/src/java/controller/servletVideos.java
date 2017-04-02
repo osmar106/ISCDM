@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -25,27 +24,24 @@ import model.video;
  *
  * @author Osmar
  */
-@WebServlet("/Video")
+@WebServlet("/video")
 public class servletVideos extends HttpServlet {
 
 public void doPost(HttpServletRequest request, HttpServletResponse response)  
             throws ServletException, IOException {  
   
-//response.setContentType("text/html");  
-          
-String id =request.getParameter("id");  
-String title =request.getParameter("title");  
-String author =request.getParameter("author");
-String creationdate =request.getParameter("creationdate");
-String reproductions =request.getParameter("reproductions");
-String description =request.getParameter("description");
-String format =request.getParameter("format");
-String message="";
+    //response.setContentType("text/html");  
+
+    String id =request.getParameter("id");  
+    String title =request.getParameter("title");  
+    String author =request.getParameter("author");
+    String creationdate =request.getParameter("creationdate");
+    String reproductions =request.getParameter("reproductions");
+    String description =request.getParameter("description");
+    String format =request.getParameter("format");
 
     String[] strArray = new String[]{id, title, author, creationdate, reproductions, description, format};
-    video.insert(strArray);
-    message = "El usuario fue registrado con éxito.";   
-
+    video.insert(strArray);  
 
 
 }
